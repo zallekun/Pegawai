@@ -3,7 +3,7 @@
 <?= $this->section('content'); ?>
 <div class="my-3 p-3 bg-body rounded shadow-sm">
     <div class="d-flex justify-content-between border-bottom py-2">
-        <h3 class="pb-2 mb-0">Edit Data Jabtan</h3>
+        <h3 class="pb-2 mb-0">Edit Data Pegawai</h3>
         <a href="/pegawai" class="btn btn-primary">Kembali</a>
     </div>
    <div class="pt-3">

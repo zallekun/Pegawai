@@ -7,6 +7,14 @@
         <a href="/pegawai/create" class="btn btn-primary">Tambatan Data</a>
     </div>
     <div class="pt-3">
+        <!-- Tambahkan di atas tabel -->
+<form method="get" action="/pegawai" class="mb-3">
+  <div class="input-group">
+    <input type="text" name="q" class="form-control" placeholder="Cari nama pegawai..." value="<?= esc($q ?? '') ?>">
+    <button class="btn btn-primary" type="submit">Cari</button>
+  </div>
+</form>
+<a href="/pegawai/export/pdf" class="btn btn-danger mb-3" target="_blank">Export PDF</a>
         <table class="table table-bordered table-striped">
             <thead>
     <tr>
