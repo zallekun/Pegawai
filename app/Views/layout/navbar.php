@@ -1,13 +1,13 @@
 <nav class="navbar navbar-expand-lg bg-dark" data-bs-theme="dark">
   <div class="container">
-    <a class="navbar-brand" href="#">Pegawai</a>
+    <a class="navbar-brand" href="/">Website Pegawai</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <a class="nav-link" href="./">Beranda</a>
+          <a class="nav-link" href="/">Beranda</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="/jabatan">Jabatan</a>
@@ -26,6 +26,7 @@
             <?= esc(session()->get('username')); ?>
           </a>
           <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarProfile">
+            <li><a class="dropdown-item" href="/profile/password">Ganti Password</a></li>
             <li><hr class="dropdown-divider"></li>
             <li><a class="dropdown-item" href="/logout">Logout</a></li>
           </ul>

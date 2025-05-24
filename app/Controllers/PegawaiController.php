@@ -5,6 +5,7 @@ namespace App\Controllers;
 use App\Controllers\BaseController;
 use App\Models\JabatanModel;
 use App\Models\PegawaiModel;
+use Dompdf\Dompdf;
 
 class PegawaiController extends BaseController
 {
@@ -16,9 +17,17 @@ class PegawaiController extends BaseController
 
     public function index()
     {
+        $q = $this->request->getGet('q');
+        $db = \Config\Database::connect();
+        $builder = $db->table('pegawai');
+        $builder->select('pegawai.*, jabatan.nama_jabatan');
+        $builder->join('jabatan', 'jabatan.id = pegawai.id_jabatan', 'left');
+        $pegawai = $builder->get()->getResult();
 
-        $data['pegawai'] = $this->pegawaiModel->getPegawaiWithJabatan();
-        return view('pegawai/index', $data);
+        return view('pegawai/index', [
+            'pegawai' => $pegawai,
+            'q' => $q
+        ]);
     }
 
     public function create()
@@ -75,5 +84,22 @@ class PegawaiController extends BaseController
 
         $this->pegawaiModel->delete($id);
         return redirect()->to('/pegawai')->with('success', 'Data pegawai Berhasil Dihapus');
+    }
+
+    public function exportPdf()
+    {
+        $db = \Config\Database::connect();
+        $builder = $db->table('pegawai');
+        $builder->select('pegawai.*, jabatan.nama_jabatan');
+        $builder->join('jabatan', 'jabatan.id = pegawai.id_jabatan', 'left');
+        $pegawai = $builder->get()->getResult();
+
+        $html = view('pegawai/export_pdf', ['pegawai' => $pegawai]);
+
+        $dompdf = new \Dompdf\Dompdf();
+        $dompdf->loadHtml($html);
+        $dompdf->setPaper('A4', 'portrait');
+        $dompdf->render();
+        $dompdf->stream('data-pegawai.pdf', ['Attachment' => false]);
     }
 }
