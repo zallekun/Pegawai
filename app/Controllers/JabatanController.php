@@ -56,7 +56,14 @@ class JabatanController extends BaseController
     }
      public function delete($id)
     {
+        $pegawaiModel = new \App\Models\PegawaiModel();
+        $jumlahPegawai = $pegawaiModel->where('id_jabatan', $id)->countAllResults();
+
+        if ($jumlahPegawai > 0) {
+            return redirect()->to('/jabatan')->with('error', 'Tidak bisa menghapus jabatan yang masih dipakai pegawai!');
+        }
+
         $this->jabatanModel->delete($id);
-        return redirect()->to('/jabatan')->with('success', 'Data Jabatan Berhasil Dihapus');
+        return redirect()->to('/jabatan')->with('success', 'Data jabatan berhasil dihapus!');
     }
 }

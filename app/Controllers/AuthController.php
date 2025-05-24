@@ -13,31 +13,33 @@ class AuthController extends BaseController
         return view('login/login');
     }
     public function prosesLogin()
-{
-    $session = session();
-    $model = new UserModel();
-    $username = $this->request->getPost('username');
-    $password = $this->request->getPost('password');
+    {
+        $session = session();
+        $model = new UserModel();
+        $username = $this->request->getPost('username');
+        $password = $this->request->getPost('password');
 
-    $user = $model->where('username', $username)->first();
+        $user = $model->where('username', $username)->first();
 
-    if ($user && password_verify($password, $user['password'])) {
-        $session->set([
-            'id' => $user['id'],
-            'username' => $user['username'],
-            'logged_in' => true,
-        ]);
-        // Ubah redirect ke beranda
-        return redirect()->to('/');
-    } else {
-        return redirect()->back()->with('error', 'Username atau password salah');
+        if ($user && password_verify($password, $user['password'])) {
+            $session->set([
+                'id' => $user['id'],
+                'username' => $user['username'],
+                'logged_in' => true,
+            ]);
+            // Tambahkan flash message sukses login
+            return redirect()->to('/')->with('success', 'Login berhasil!');
+        } else {
+            // Flash message gagal login
+            return redirect()->back()->with('error', 'Username atau password salah');
+        }
     }
-}
 
     public function logout()
     {
         session()->destroy();
-        return redirect()->to('/login');
+        // Flash message logout
+        return redirect()->to('/login')->with('success', 'Logout berhasil!');
     }
     public function changePassword()
     {
@@ -72,6 +74,7 @@ class AuthController extends BaseController
             'password' => password_hash($newPassword, PASSWORD_DEFAULT)
         ]);
 
-        return redirect()->to('/')->with('success', 'Password berhasil diubah');
+        // Flash message sukses ganti password
+        return redirect()->to('/')->with('success', 'Password berhasil diubah!');
     }
 }
