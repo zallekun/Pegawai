@@ -29,6 +29,19 @@
     <?php endif; ?>
 
     <div class="container py-5">
+        <?php if (session()->getFlashdata('success')): ?>
+        <div class="alert alert-success alert-dismissible fade show m-3" role="alert">
+            <?= session()->getFlashdata('success') ?>
+            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+        </div>
+        <?php endif; ?>
+        <?php if (session()->getFlashdata('error')): ?>
+        <div class="alert alert-danger alert-dismissible fade show m-3" role="alert">
+            <?= session()->getFlashdata('error') ?>
+            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+        </div>
+        <?php endif; ?>
+
         <?= $this->renderSection('content'); ?>
     </div>
     <footer class="footer mt-auto py-3 bg-secondary">
