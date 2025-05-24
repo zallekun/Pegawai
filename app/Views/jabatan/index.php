@@ -34,5 +34,6 @@
             </tbody>
         </table>
     </div>
+    <?= $pager->links('jabatan', 'default_full') ?>
 </div>
 <?= $this->endsection(); ?>

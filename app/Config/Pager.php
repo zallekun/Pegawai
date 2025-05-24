@@ -24,6 +24,7 @@ class Pager extends BaseConfig
         'default_full'   => 'CodeIgniter\Pager\Views\default_full',
         'default_simple' => 'CodeIgniter\Pager\Views\default_simple',
         'default_head'   => 'CodeIgniter\Pager\Views\default_head',
+        'bootstrap'      => 'App\Views\Pager\bootstrap', // tambahkan baris ini
     ];
 
     /**
@@ -34,4 +35,18 @@ class Pager extends BaseConfig
      * The default number of results shown in a single page.
      */
     public int $perPage = 20;
+
+    public function links($group = null, $template = null)
+    {
+        // Your existing links generation logic...
+
+        // Incorporate the suggested code change
+        if ($group === 'pegawai' && $template === 'default_full') {
+            // Generate links for 'pegawai' group using 'default_full' template
+            return '<?= $pager->links(\'pegawai\', \'default_full\') ?>';
+        }
+
+        // Default links generation
+        return '...';
+    }
 }

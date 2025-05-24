@@ -18,15 +18,21 @@ class PegawaiController extends BaseController
     public function index()
     {
         $q = $this->request->getGet('q');
-        $db = \Config\Database::connect();
-        $builder = $db->table('pegawai');
-        $builder->select('pegawai.*, jabatan.nama_jabatan');
-        $builder->join('jabatan', 'jabatan.id = pegawai.id_jabatan', 'left');
-        $pegawai = $builder->get()->getResult();
+        $sort = $this->request->getGet('sort') ?? 'nama_pegawai';
+        $order = $this->request->getGet('order') ?? 'asc';
+
+        $model = new \App\Models\PegawaiModel();
+        $builder = $model->getPegawaiWithJabatan($q, $sort, $order);
+
+        $pegawai = $builder->paginate(8, 'pegawai');
+        $pager = $model->pager;
 
         return view('pegawai/index', [
             'pegawai' => $pegawai,
-            'q' => $q
+            'pager' => $pager,
+            'q' => $q,
+            'sort' => $sort,
+            'order' => $order
         ]);
     }
 
