@@ -14,13 +14,18 @@ class PegawaiModel extends Model
     protected $protectFields    = true;
     protected $allowedFields    = ['nama_pegawai','id_jabatan', 'alamat', 'no_telp', 'email'];
 
-// PegawaiModel.php (sudah diperbaiki)
-public function getPegawaiWithJabatan()
-{
-    return $this->select('pegawai.*, jabatan.nama_jabatan, jabatan.deskripsi_jabatan')
-                ->join('jabatan', 'jabatan.id = pegawai.id_jabatan')
-                ->findAll();
-}
+    public function getPegawaiWithJabatan($q = null, $sort = 'nama_pegawai', $order = 'asc')
+    {
+        $builder = $this->select('pegawai.*, jabatan.nama_jabatan')
+            ->join('jabatan', 'jabatan.id = pegawai.id_jabatan', 'left')
+            ->orderBy($sort, $order);
+
+        if ($q) {
+            $builder->like('pegawai.nama_pegawai', $q);
+        }
+
+        return $builder;
+    }
 
 
     // protected bool $allowEmptyInserts = false;

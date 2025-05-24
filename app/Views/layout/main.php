@@ -28,20 +28,31 @@
         <?= $this->include('layout/navbar'); ?>
     <?php endif; ?>
 
-    <div class="container py-5">
+    <!-- Toast/Alert di sini, setelah navbar -->
+    <div aria-live="polite" aria-atomic="true" class="position-fixed top-0 end-0 p-3" style="z-index: 1080; margin-top: 70px;">
         <?php if (session()->getFlashdata('success')): ?>
-        <div class="alert alert-success alert-dismissible fade show m-3" role="alert">
-            <?= session()->getFlashdata('success') ?>
-            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
-        </div>
+            <div class="toast align-items-center text-bg-success border-0 show" role="alert" aria-live="assertive" aria-atomic="true">
+                <div class="d-flex">
+                    <div class="toast-body">
+                        <?= session()->getFlashdata('success') ?>
+                    </div>
+                    <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"></button>
+                </div>
+            </div>
         <?php endif; ?>
         <?php if (session()->getFlashdata('error')): ?>
-        <div class="alert alert-danger alert-dismissible fade show m-3" role="alert">
-            <?= session()->getFlashdata('error') ?>
-            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
-        </div>
+            <div class="toast align-items-center text-bg-danger border-0 show" role="alert" aria-live="assertive" aria-atomic="true">
+                <div class="d-flex">
+                    <div class="toast-body">
+                        <?= session()->getFlashdata('error') ?>
+                    </div>
+                    <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"></button>
+                </div>
+            </div>
         <?php endif; ?>
+    </div>
 
+    <div class="container py-5">
         <?= $this->renderSection('content'); ?>
     </div>
     <footer class="footer mt-auto py-3 bg-secondary">
@@ -51,5 +62,10 @@
             </footer>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="/public/assets/js/bootstrap.bundle.min.js"></script>
+    <script>
+        document.querySelectorAll('.toast').forEach(function(toastEl) {
+            new bootstrap.Toast(toastEl, { delay: 7000 }).show();
+        });
+    </script>
 </body>
 </html>

@@ -14,8 +14,28 @@ class JabatanController extends BaseController
     }
     public function index()
     {
-        $data['jabatan'] = $this->jabatanModel->findAll();
-        return view ('jabatan/index', $data);
+        $model = new \App\Models\JabatanModel();
+
+        $q = $this->request->getGet('q');
+        $sort = $this->request->getGet('sort') ?? 'nama_jabatan';
+        $order = $this->request->getGet('order') ?? 'asc';
+
+        $builder = $model->orderBy($sort, $order);
+
+        if ($q) {
+            $builder->like('nama_jabatan', $q);
+        }
+
+        $jabatan = $builder->paginate(8, 'jabatan');
+        $pager = $model->pager;
+
+        return view('jabatan/index', [
+            'jabatan' => $jabatan,
+            'pager' => $pager,
+            'q' => $q,
+            'sort' => $sort,
+            'order' => $order
+        ]);
     }
     public function show($id)
     {
