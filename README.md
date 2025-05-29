@@ -1,68 +1,212 @@
-# CodeIgniter 4 Application Starter
+# 🏢 Aplikasi CRUD Pegawai - CodeIgniter 4
 
-## What is CodeIgniter?
+<div align="center">
 
-CodeIgniter is a PHP full-stack web framework that is light, fast, flexible and secure.
-More information can be found at the [official site](https://codeigniter.com).
+![CodeIgniter](https://img.shields.io/badge/CodeIgniter-4.x-EF4223?style=for-the-badge&logo=codeigniter&logoColor=white)
+![PHP](https://img.shields.io/badge/PHP-8.x-777BB4?style=for-the-badge&logo=php&logoColor=white)
+![MySQL](https://img.shields.io/badge/MySQL-4479A1?style=for-the-badge&logo=mysql&logoColor=white)
+![Bootstrap](https://img.shields.io/badge/Bootstrap-5-7952B3?style=for-the-badge&logo=bootstrap&logoColor=white)
 
-This repository holds a composer-installable app starter.
-It has been built from the
-[development repository](https://github.com/codeigniter4/CodeIgniter4).
+**Aplikasi web sederhana untuk manajemen data pegawai dan jabatan berbasis CodeIgniter 4**
 
-More information about the plans for version 4 can be found in [CodeIgniter 4](https://forum.codeigniter.com/forumdisplay.php?fid=28) on the forums.
+*Cocok untuk pembelajaran CRUD, role user, pagination, notifikasi, dan fitur dashboard statistik*
 
-You can read the [user guide](https://codeigniter.com/user_guide/)
-corresponding to the latest version of the framework.
+[📖 Dokumentasi](#setup-instructions) • [🚀 Demo](#cara-login-ke-dashboard) • [🐛 Issues](https://github.com/zallekun/Pegawai/issues) • [💬 Discussions](https://github.com/zallekun/Pegawai/discussions)
 
-## Installation & updates
+</div>
 
-`composer create-project codeigniter4/appstarter` then `composer update` whenever
-there is a new release of the framework.
+---
 
-When updating, check the release notes to see if there are any changes you might need to apply
-to your `app` folder. The affected files can be copied or merged from
-`vendor/codeigniter4/framework/app`.
+## 📋 Daftar Isi
+- [✨ Fitur Utama](#-fitur-utama)
+- [🛠️ Teknologi](#️-teknologi)
+- [📦 Instalasi](#-instalasi)
+- [🔐 Login Dashboard](#-login-dashboard)
+- [📸 Screenshot](#-screenshot)
+- [🤖 AI Support](#-ai-support)
+- [📞 Kontak](#-kontak)
+- [📄 Lisensi](#-lisensi)
 
-## Setup
+---
 
-Copy `env` to `.env` and tailor for your app, specifically the baseURL
-and any database settings.
+## ✨ Fitur Utama
 
-## Important Change with index.php
+### 🎯 Core Features
+- **CRUD Pegawai & Jabatan** - Kelola data pegawai dan jabatan dengan lengkap
+- **Role Management** - Sistem peran Admin (full access) dan User (read-only)
+- **Authentication** - Login/logout dengan sistem keamanan yang baik
+- **Change Password** - User dapat mengganti password sendiri
 
-`index.php` is no longer in the root of the project! It has been moved inside the *public* folder,
-for better security and separation of components.
+### 📊 Dashboard & Analytics
+- **Dashboard Statistik** - Overview jumlah pegawai, jabatan, dan user
+- **Interactive Charts** - Grafik distribusi pegawai per jabatan menggunakan Chart.js
+- **Data Visualization** - Tampilan data yang informatif dan menarik
 
-This means that you should configure your web server to "point" to your project's *public* folder, and
-not to the project root. A better practice would be to configure a virtual host to point there. A poor practice would be to point your web server to the project root and expect to enter *public/...*, as the rest of your logic and the
-framework are exposed.
+### 🔧 Advanced Features
+- **Smart Pagination** - Navigasi data yang efisien
+- **Sorting System** - Pengurutan data berdasarkan kolom
+- **PDF Export** - Export data pegawai ke format PDF
+- **Toast Notifications** - Notifikasi real-time untuk setiap aksi
+- **About Page** - Profil kontributor dengan link LinkedIn
 
-**Please** read the user guide for a better explanation of how CI4 works!
+---
 
-## Repository Management
+## 🛠️ Teknologi
 
-We use GitHub issues, in our main repository, to track **BUGS** and to track approved **DEVELOPMENT** work packages.
-We use our [forum](http://forum.codeigniter.com) to provide SUPPORT and to discuss
-FEATURE REQUESTS.
+| Kategori | Teknologi | Versi |
+|----------|-----------|-------|
+| **Backend** | PHP | 8.x |
+| **Framework** | CodeIgniter | 4.x |
+| **Database** | MySQL/MariaDB | Latest |
+| **Frontend** | Bootstrap | 5.x |
+| **Charts** | Chart.js | Latest |
+| **PDF Generator** | Dompdf | Latest |
+| **Version Control** | Git & GitHub | - |
 
-This repository is a "distribution" one, built by our release preparation script.
-Problems with it can be raised on our forum, or as issues in the main repository.
+---
 
-## Server Requirements
+## 📦 Instalasi
 
-PHP version 8.1 or higher is required, with the following extensions installed:
+### 1️⃣ Clone Repository
+```bash
+git clone https://github.com/zallekun/Pegawai.git
+cd Pegawai
+```
 
-- [intl](http://php.net/manual/en/intl.requirements.php)
-- [mbstring](http://php.net/manual/en/mbstring.installation.php)
+### 2️⃣ Setup Environment
+```bash
+# Install dependencies
+composer install
 
-> [!WARNING]
-> - The end of life date for PHP 7.4 was November 28, 2022.
-> - The end of life date for PHP 8.0 was November 26, 2023.
-> - If you are still using PHP 7.4 or 8.0, you should upgrade immediately.
-> - The end of life date for PHP 8.1 will be December 31, 2025.
+# Copy environment file
+cp env .env
+```
 
-Additionally, make sure that the following extensions are enabled in your PHP:
+### 3️⃣ Konfigurasi Database
+Edit file `.env` dan sesuaikan konfigurasi database:
+```env
+database.default.hostname = localhost
+database.default.database = pegawai_db
+database.default.username = root
+database.default.password = 
+database.default.DBDriver = MySQLi
+```
 
-- json (enabled by default - don't turn it off)
-- [mysqlnd](http://php.net/manual/en/mysqlnd.install.php) if you plan to use MySQL
-- [libcurl](http://php.net/manual/en/curl.requirements.php) if you plan to use the HTTP\CURLRequest library
+### 4️⃣ Setup Database
+```bash
+# Buat database
+CREATE DATABASE pegawai_db;
+
+# Jalankan migration
+php spark migrate
+
+# Atau import file SQL (jika tersedia)
+```
+
+### 5️⃣ Deploy ke Web Server
+| Server | Path |
+|--------|------|
+| **Laragon** | `C:\laragon\www\Pegawai` |
+| **XAMPP** | `C:\xampp\htdocs\Pegawai` |
+
+### 6️⃣ Akses Aplikasi
+```
+🌐 http://localhost/Pegawai/public
+```
+
+---
+
+## 🔐 Login Dashboard
+
+### Default Credentials
+```
+👤 Username: admin
+🔒 Password: admin1234
+🛡️  Role: Administrator
+```
+
+### Login URL
+```
+🔗 http://localhost/Pegawai/public/login
+```
+
+> **⚠️ Keamanan:** Password sudah di-hash menggunakan enkripsi yang aman
+
+---
+
+## 📸 Screenshot
+
+> *Screenshot akan ditambahkan setelah deployment*
+
+| Dashboard | CRUD Pegawai | Export PDF |
+|-----------|--------------|------------|
+| ![Dashboard](link) | ![CRUD](link) | ![PDF](link) |
+
+---
+
+## 🤖 AI Support
+
+Aplikasi ini dikembangkan dengan bantuan **IBM Granite AI** untuk:
+- ⚡ Mempercepat penulisan kode
+- 📚 Pembuatan dokumentasi yang komprehensif  
+- 🔧 Solusi otomatis untuk masalah pengembangan CodeIgniter 4
+- 🎯 Optimisasi performa dan best practices
+
+---
+
+## 📞 Kontak
+
+<div align="center">
+
+### 👨‍💻 Developer
+
+**REZAL SURYADI PUTRA**
+
+[![Email](https://img.shields.io/badge/Email-D14836?style=for-the-badge&logo=gmail&logoColor=white)](mailto:suryadirezal@gmail.com)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/rezalsuryadiputra/)
+[![GitHub](https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white)](https://github.com/zallekun)
+
+</div>
+
+### 📧 Contact Information
+- **Email:** suryadirezal@gmail.com
+- **LinkedIn:** [Rezal Suryadi Putra](https://www.linkedin.com/in/rezalsuryadiputra/)
+- **GitHub:** [@zallekun](https://github.com/zallekun)
+
+---
+
+## 🤝 Kontribusi
+
+Kontribusi selalu diterima! Untuk berkontribusi:
+
+1. Fork project ini
+2. Buat feature branch (`git checkout -b feature/AmazingFeature`)
+3. Commit changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push ke branch (`git push origin feature/AmazingFeature`)
+5. Buka Pull Request
+
+---
+
+## 📄 Lisensi
+
+Distributed under the MIT License. See `LICENSE` for more information.
+
+---
+
+## 🙏 Acknowledgments
+
+- [CodeIgniter](https://codeigniter.com/) - The PHP framework
+- [Bootstrap](https://getbootstrap.com/) - CSS framework
+- [Chart.js](https://www.chartjs.org/) - Chart library
+- [Dompdf](https://github.com/dompdf/dompdf) - PDF generator
+- [IBM Granite AI](https://www.ibm.com/granite) - AI development assistance
+
+---
+
+<div align="center">
+
+**⭐ Jangan lupa berikan star jika project ini membantu! ⭐**
+
+Made with ❤️ by [REZAL SURYADI PUTRA](https://github.com/zallekun)
+
+</div>
