@@ -79,7 +79,7 @@ Berikut contoh akun default (jika sudah diisi di database):
 
 1. Buka halaman login di browser:  
    ```
-   http://localhost/nama-repo/public/login
+   http://localhost:8080/index.php/login
    ```
 2. Masukkan username dan password.
 3. Klik tombol **Login** untuk masuk ke dashboard.
