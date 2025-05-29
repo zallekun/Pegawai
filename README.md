@@ -29,7 +29,7 @@ Cocok untuk pembelajaran CRUD, role user, pagination, notifikasi, dan fitur dash
 1. **Clone repository**
    ```sh
    git clone https://github.com/zallekun/Pegawai.git
-   cd nama-repo
+   cd Pegawai
    ```
 
 2. **Copy ke folder web server**
