@@ -7,6 +7,7 @@
 ![MySQL](https://img.shields.io/badge/MySQL-4479A1?style=for-the-badge&logo=mysql&logoColor=white)
 ![Bootstrap](https://img.shields.io/badge/Bootstrap-5-7952B3?style=for-the-badge&logo=bootstrap&logoColor=white)
 
+
 **Aplikasi web sederhana untuk manajemen data pegawai dan jabatan berbasis CodeIgniter 4**
 
 *Cocok untuk pembelajaran CRUD, role user, pagination, notifikasi, dan fitur dashboard statistik*
@@ -140,7 +141,7 @@ php spark migrate
 
 | Dashboard | CRUD Pegawai | Export PDF |
 |-----------|--------------|------------|
-| ![Dashboard](link) | ![CRUD](link) | ![PDF](link) |
+| ![Dashboard](https://github.com/user-attachments/assets/59767389-3fe2-4aa8-a16f-4cc769457989) | ![CRUD](https://github.com/user-attachments/assets/4566638b-6dca-4f5b-bedd-8fd3146e2d39) | ![PDF](https://github.com/user-attachments/assets/248d8517-6665-4c8b-8b92-131a60903944) |
 
 ---
 
