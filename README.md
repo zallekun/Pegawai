@@ -137,8 +137,6 @@ php spark migrate
 
 ## 📸 Screenshot
 
-> *Screenshot akan ditambahkan setelah deployment*
-
 | Dashboard | CRUD Pegawai | Export PDF |
 |-----------|--------------|------------|
 | ![Dashboard](https://github.com/user-attachments/assets/59767389-3fe2-4aa8-a16f-4cc769457989) | ![CRUD](https://github.com/user-attachments/assets/4566638b-6dca-4f5b-bedd-8fd3146e2d39) | ![PDF](https://github.com/user-attachments/assets/248d8517-6665-4c8b-8b92-131a60903944) |
