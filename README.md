@@ -198,7 +198,6 @@ Distributed under the MIT License. See `LICENSE` for more information.
 - [Bootstrap](https://getbootstrap.com/) - CSS framework
 - [Chart.js](https://www.chartjs.org/) - Chart library
 - [Dompdf](https://github.com/dompdf/dompdf) - PDF generator
-- [IBM Granite AI](https://www.ibm.com/granite) - AI development assistance
 
 ---
 
